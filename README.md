@@ -25,7 +25,7 @@ TODO:
 - Easy close of the buffer after it has exited
 - Search upwards if we are in a sub directory of a grails project
 - Alias to commands rather than calling the functions directly
-- 
+
 
 Resources:
 http://www.objectpartners.com/2012/02/28/using-vim-as-your-grails-ide-part-2/ - mostly modified the test script from here
