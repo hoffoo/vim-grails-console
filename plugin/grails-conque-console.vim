@@ -1,3 +1,6 @@
+command! -nargs=0 RunSingleGrailsTest call RunSingleGrailsTest()
+command! -nargs=0 RunGrailsTestFile call RunGrailsTestFile()
+command! -nargs=0 StartGrailsConque call StartGrailsConque()
 
 if !exists('g:GrailsShellName')
 	let g:GrailsShellName = "grails"
