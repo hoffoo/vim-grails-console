@@ -1,8 +1,4 @@
 
-if !exists('g:GrailsShellName')
-	let g:GrailsShellName = "grails"
-endif
-
 if !exists('g:GrailsShellExecutable')
 	let g:GrailsShellExecutable = "grails"
 endif
@@ -12,8 +8,8 @@ command! -nargs=0 RunGrailsTestFile call RunGrailsTestFile()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
 command! -nargs=1 -complete=file -bar RunGrailsTest call RunGrailsTest('<args>')
 
-autocmd BufHidden "" . g:GrailsShellName . "" execute ":bdel " . g:GrailsShellName
-
+autocmd BufHidden _grails_ execute ":bdel _grails_"
+autocmd BufEnter _grails_ execute ":startinsert"
 
 function! RunSingleGrailsTest()
     let testName = expand("%:t:r.") . "." . expand("<cword>")
@@ -36,14 +32,14 @@ function! RunGrailsTest(testName)
 endfunction
 
 function! RunInConque(testcmd)
-	execute ":drop " . g:GrailsShellName
+	execute ":drop _grails_"
 	execute ":startinsert"
 	execute ":normal i" . a:testcmd . "\<CR>"
 endfunction
 
 function! StartGrailsConque()
-	execute ":ConqueTermSplit " . g:GrailsShellExecutable
-	execute ":file " . g:GrailsShellName
+	execute ":ConqueTerm " . g:GrailsShellExecutable
+	execute ":file _grails_"
 endfunction
 
 "function! TestResults()

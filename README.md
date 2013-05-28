@@ -24,19 +24,19 @@ Map to run the Test under the cursor -
 You can also run a test by name making it more convenient to map a specific run:
 <code>:RunGrailsTest TestName</code>
 
-You can also override the shell name and the path to the executable using:
+You can also override the path to the executable using:
 
-<code>let g:GrailsShellName = "grails"</code>
 <code>let g:GrailsShellExecutable = "grails"</code>
 
-By default they are both grails - name will be the buffer name and executable
-can be the full path.
+The plugin will force insert mode once switching back to the grails console,
+in addition it cleans up the \_grails\_ buffer.
 
 ![Screenshot](http://i.imgur.com/eOxz0d3.png)
 
 TODO:
 
 - Search upwards if we are in a sub directory of a grails project
+- Force closing the grails process
 
 Resources:
 http://www.objectpartners.com/2012/02/28/using-vim-as-your-grails-ide-part-2/ - mostly modified the test script from here
