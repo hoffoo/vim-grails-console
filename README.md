@@ -16,10 +16,10 @@ To start the grails shell -
 <code>:StartGrailsConque</code>
 
 Map to run the whole file - 
-<code>map <leader>t :RunGrailsTestFile</code>
+<code>map \<leader>t :RunGrailsTestFile</code>
 
 Map to run the Test under the cursor -
-<code>map <leader>s :RunSingleGrailsTest</code>
+<code>map \<leader>s :RunSingleGrailsTest</code>
 
 You can also run a test by name making it more convenient to map a specific run:
 <code>:RunGrailsTest TestName</code>
