@@ -3,9 +3,9 @@ you need to have conque-shell installed beforehand. I recommend using [pathogen]
 
 If thats the case you can do:
 <code>
-cd ~/.vim/bundle
-git clone https://github.com/rosenfeld/conque-term.git
-git clone https://github.com/hoffoo/vim-grails-console.git
+cd ~/.vim/bundle<br>
+git clone https://github.com/rosenfeld/conque-term.git<br>
+git clone https://github.com/hoffoo/vim-grails-console.git<br>
 </code>
 
 You can either run the entire file or the test function under your cursor. 
