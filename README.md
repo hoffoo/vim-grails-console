@@ -36,7 +36,6 @@ can be the full path.
 
 TODO:
 
-- Easy close of the buffer after it has exited
 - Search upwards if we are in a sub directory of a grails project
 
 Resources:

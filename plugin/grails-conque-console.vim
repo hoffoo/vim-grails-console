@@ -12,7 +12,7 @@ command! -nargs=0 RunGrailsTestFile call RunGrailsTestFile()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
 command! -nargs=1 -complete=file -bar RunGrailsTest call RunGrailsTest('<args>')
 
-autocmd BufHidden g:GrailsShellName execute :bdel g:GrailsShellName
+autocmd BufHidden "" . g:GrailsShellName . "" execute ":bdel " . g:GrailsShellName
 
 
 function! RunSingleGrailsTest()
