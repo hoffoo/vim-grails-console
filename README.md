@@ -16,11 +16,11 @@ To start the grails shell -
 <code>:StartGrailsConque</code>
 
 Map to run the whole file - 
-<code>map <F12> :RunGrailsTestFile</code>
+<code>map <leader>t :RunGrailsTestFile</code>
 
 
 Map to run the Test under the cursor -
-<code>map <F11> :RunSingleGrailsTest</code>
+<code>map <leader>s :RunSingleGrailsTest</code>
 
 You can also override the shell name and the path to the executable using:
 
