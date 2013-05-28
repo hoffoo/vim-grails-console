@@ -31,7 +31,7 @@ function! RunGrailsTest(testName)
 endfunction
 
 function! RunInConque(testcmd)
-	execute ":drop grails"
+	execute ":drop " . g:GrailsShellName
 	execute ":startinsert"
 	execute ":normal i" . a:testcmd . "\<CR>"
 endfunction
