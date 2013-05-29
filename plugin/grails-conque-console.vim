@@ -3,6 +3,14 @@ if !exists('g:GrailsShellExecutable')
 	let g:GrailsShellExecutable = "grails"
 endif
 
+if exists('g:GrailsTestsOutputChromium')
+	let g:GrailsTestsBrowser = "chromium --app=file://"
+endif
+
+if exists('g:GrailsTestsOutputChrome')
+	let g:GrailsTestsBrowser = "google-chrome --app=file://"
+endif
+
 command! -nargs=0 RunSingleGrailsTest call RunSingleGrailsTest()
 command! -nargs=0 RunGrailsTestFile call RunGrailsTestFile()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
@@ -40,6 +48,10 @@ endfunction
 function! StartGrailsConque()
 	execute ":ConqueTerm " . g:GrailsShellExecutable
 	execute ":file _grails_"
+
+	if exists('g:GrailsTestsBrowser')
+		execute ":! " . g:GrailsTestsBrowser . "`pwd`/target/test-reports/html/index.html"
+	endif
 endfunction
 
 "function! TestResults()

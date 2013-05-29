@@ -36,6 +36,18 @@ Misc:
 let g:GrailsShellExecutable = "/opt/grails/bin/grails" " default is just grails
 ```
 
+You can also optionally open a browser frame to show the html output of your tests - 
+to do this set
+
+```vim
+
+let g:GrailsTestsOutputChrome = 1
+" or
+let g:GrailsTestsOutputChromium = 1
+
+" more browsers to come
+
+```
 
 ![Screenshot](http://i.imgur.com/eOxz0d3.png)
 
