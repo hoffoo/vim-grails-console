@@ -8,17 +8,19 @@ git clone https://github.com/rosenfeld/conque-term.git
 git clone https://github.com/hoffoo/vim-grails-console.git
 ```
 
-Recommended Conque settings:
+You can either run the entire file or the test function under your cursor. 
+
+The defalt behavior of this plugin is to enter insert mode when switching back to it so Conque gets updated.
+This way it does not override the g:ConqueTerm_InsertOnEnter. You can disable this with g:GrailsShellInsertOnEnter.
 ```vim
+
+" Recommended Conque settings
 let g:ConqueTerm_ReadUnfocused = 1 " run while not the selected window
 let g:ConqueTerm_CloseOnEnd = 1 " quit grails when done
 ```
-You can either run the entire file or the test function under your cursor. 
-
-Example mappings:
-
-To start the grails shell - 
+Misc: 
 ```vim
+" Start the grails shell
 :StartGrailsConque
 
 " Map to run the whole file - 
@@ -27,15 +29,13 @@ To start the grails shell -
 " Map to run the Test under the cursor -
 :map <leader>s :RunSingleGrailsTest<cr>
 
-" You can also run a test by name making it more convenient to map a specific run:
+" You can also run a test by name, making it convenient to map a specific run:
 :RunGrailsTest TestName
 
 " You can also override the path to the executable using:
-
-let g:GrailsShellExecutable = "grails"
+let g:GrailsShellExecutable = "/opt/grails/bin/grails" " default is just grails
 ```
 
-The defalt behavior of this plugin is to enter insert mode when switching back to it so Conque gets updated.
 
 ![Screenshot](http://i.imgur.com/eOxz0d3.png)
 
