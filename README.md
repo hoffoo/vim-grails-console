@@ -8,6 +8,12 @@ git clone https://github.com/rosenfeld/conque-term.git<br>
 git clone https://github.com/hoffoo/vim-grails-console.git<br>
 </code>
 
+Recommended Conque settings:
+
+let g:ConqueTerm_ReadUnfocused = 1
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_CloseOnEnd = 1
+
 You can either run the entire file or the test function under your cursor. 
 
 Example mappings:
@@ -36,7 +42,6 @@ in addition it cleans up the \_grails\_ buffer.
 TODO:
 
 - Search upwards if we are in a sub directory of a grails project
-- Force closing the grails process
 
 Resources:
 http://www.objectpartners.com/2012/02/28/using-vim-as-your-grails-ide-part-2/ - mostly modified the test script from here
