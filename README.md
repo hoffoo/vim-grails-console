@@ -44,10 +44,8 @@ to do this set
 let g:GrailsTestsOutputChrome = 1
 " or
 let g:GrailsTestsOutputChromium = 1
-
-" more browsers to come
-
 ```
+More browsers to come!
 
 ![Screenshot](http://i.imgur.com/eOxz0d3.png)
 
