@@ -18,6 +18,7 @@ command! -nargs=1 -complete=file -bar RunGrailsTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
 autocmd BufEnter _grails_ execute ":startinsert"
+autocmd BufLeave _grails_ execute ":stopinsert"
 
 function! RunSingleGrailsTest()
     let testName = expand("%:t:r.") . "." . expand("<cword>")
@@ -50,7 +51,7 @@ function! StartGrailsConque()
 	execute ":file _grails_"
 
 	if exists('g:GrailsTestsBrowser')
-		execute ":! " . g:GrailsTestsBrowser . "`pwd`/target/test-reports/html/index.html"
+		execute ":! " . g:GrailsTestsBrowser . "`pwd`/target/test-reports/html/index.html&"
 	endif
 endfunction
 
