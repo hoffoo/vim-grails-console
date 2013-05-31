@@ -17,6 +17,9 @@ This way it does not override the g:ConqueTerm_InsertOnEnter. You can disable th
 " Recommended Conque settings
 let g:ConqueTerm_ReadUnfocused = 1 " run while not the selected window
 let g:ConqueTerm_CloseOnEnd = 1 " quit grails when done
+
+" Misc Settings
+g:GrailsShellStartSplit " set this to open the shell buffer across the bottom in a split
 ```
 Misc: 
 ```vim
@@ -31,6 +34,9 @@ Misc:
 
 " You can also run a test by name, making it convenient to map a specific run:
 :RunGrailsTest TestName
+
+" another useful command is rerun the last test
+:ReRunGrailsTest
 
 " You can also override the path to the executable using:
 let g:GrailsShellExecutable = "/opt/grails/bin/grails" " default is just grails
