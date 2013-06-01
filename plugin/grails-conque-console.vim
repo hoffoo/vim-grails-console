@@ -15,6 +15,7 @@ command! -nargs=0 RunSingleGrailsTest call RunSingleGrailsTest()
 command! -nargs=0 RunGrailsTestFile call RunGrailsTestFile()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
 command! -nargs=0 ReRunGrailsTest call ReRunGrailsTest()
+command! -nargs=0 StartGrailsTestsBrowser call StartGrailsTestsBrowser()
 command! -nargs=1 -complete=file -bar RunGrailsTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
@@ -60,9 +61,13 @@ function! StartGrailsConque()
 	execute ":ConqueTerm " . g:GrailsShellExecutable
 	execute ":file _grails_"
 
-	if exists('g:GrailsTestsBrowser')
-		execute ":! " . g:GrailsTestsBrowser . "`pwd`/target/test-reports/html/index.html&"
+	if exists('g:GrailsShellReturnKey')
+		execute ":inoremap <buffer> " . g:GrailsShellReturnKey . " <esc><C-w>p"
 	endif
+endfunction
+
+function! StartGrailsTestsBrowser()
+	execute ":! " . g:GrailsTestsBrowser . "`pwd`/target/test-reports/html/index.html&"
 endfunction
 
 "function! TestResults()

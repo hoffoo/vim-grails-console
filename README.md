@@ -14,12 +14,13 @@ The defalt behavior of this plugin is to enter insert mode when switching back t
 This way it does not override the g:ConqueTerm_InsertOnEnter. You can disable this with g:GrailsShellInsertOnEnter.
 ```vim
 
+" Misc Settings - off by default
+let g:GrailsShellStartSplit = 1 " set this to open the shell buffer across the bottom in a split
+let g:GrailsShellReturnKey = "<esc>"  " remap a key to switch back to previous buffer
+
 " Recommended Conque settings
 let g:ConqueTerm_ReadUnfocused = 1 " run while not the selected window
 let g:ConqueTerm_CloseOnEnd = 1 " quit grails when done
-
-" Misc Settings
-g:GrailsShellStartSplit " set this to open the shell buffer across the bottom in a split
 ```
 Misc: 
 ```vim
@@ -35,7 +36,7 @@ Misc:
 " You can also run a test by name, making it convenient to map a specific run:
 :RunGrailsTest TestName
 
-" another useful command is rerun the last test
+" another useful command to map is reruning the last test
 :ReRunGrailsTest
 
 " You can also override the path to the executable using:
@@ -50,6 +51,10 @@ to do this set
 let g:GrailsTestsOutputChrome = 1
 " or
 let g:GrailsTestsOutputChromium = 1
+
+" and open the browser with
+:StartGrailsTestsBrowser
+
 ```
 More browsers to come!
 
