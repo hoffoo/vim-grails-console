@@ -12,51 +12,57 @@ You can either run the entire file or the test function under your cursor.
 
 The defalt behavior of this plugin is to enter insert mode when switching back to it so Conque gets updated.
 This way it does not override the g:ConqueTerm_InsertOnEnter. You can disable this with g:GrailsShellInsertOnEnter.
-```vim
 
-" Misc Settings - off by default
+For conveneince <C-w> will switch out of the shell buffer and go back
+to the previous editor window.
+
+```vim
+" Settings - off by default
+" NOTE: all the keymappings apply only to the _grails_ buffer so not to conflict with the rest of your setup
 let g:GrailsShellStartSplit = 1 " set this to open the shell buffer across the bottom in a split
-let g:GrailsShellReturnKey = "<esc>"  " remap a key to switch back to previous buffer
+let g:GrailsShellReturnKey = "<C-w><C-w>" " remap a key to switch back to previous buffer
+let g:GrailsShellRemapBS = 1 " if this is set insert mode backspace will be remapped to <C-w> to delete whole word backwards
+let g:GrailsTestsBrowser = "chromium --app=file://"  " command that will be passed the tests url when running :GrailsTestsBrowser
 
 " Recommended Conque settings
 let g:ConqueTerm_ReadUnfocused = 1 " run while not the selected window
 let g:ConqueTerm_CloseOnEnd = 1 " quit grails when done
 ```
-Misc: 
+
+Plugin Commands: 
 ```vim
 " Start the grails shell
 :StartGrailsConque
 
-" Map to run the whole file - 
-:map <leader>t :RunGrailsTestFile<cr>
+" Run the current file as a Grails test (unit or integration is inferred by file path)
+:GrailsRunTestFile
 
 " Map to run the Test under the cursor -
-:map <leader>s :RunSingleGrailsTest<cr>
+:GrailsRunCurrentTest
 
 " You can also run a test by name, making it convenient to map a specific run:
-:RunGrailsTest TestName
+:GrailsRunTest TestName
 
 " another useful command to map is reruning the last test
-:ReRunGrailsTest
+:GrailsReRunTest
 
 " You can also override the path to the executable using:
 let g:GrailsShellExecutable = "/opt/grails/bin/grails" " default is just grails
 ```
 
-You can also optionally open a browser frame to show the html output of your tests - 
-to do this set
-
+You can also open a browser frame to show the html output of your tests - 
+to do this set:
 ```vim
 
-let g:GrailsTestsOutputChrome = 1
-" or
-let g:GrailsTestsOutputChromium = 1
+" this is the executable that will be passed the tests url "
+let g:GrailsTestsBrowser = 'chromium --app=file://' " open in a no tab chromium frame
+let g:GrailsTestsBrowser = 'firefox ' " notice the space
+let g:GrailsTestsBrowser = 'chromium ' " open with regular tab
 
 " and open the browser with
-:StartGrailsTestsBrowser
+:GrailsTestsBrowser
 
 ```
-More browsers to come!
 
 ![Screenshot](http://i.imgur.com/eOxz0d3.png)
 

@@ -3,20 +3,12 @@ if !exists('g:GrailsShellExecutable')
 	let g:GrailsShellExecutable = "grails"
 endif
 
-if exists('g:GrailsTestsOutputChromium')
-	let g:GrailsTestsBrowser = "chromium --app=file://"
-endif
-
-if exists('g:GrailsTestsOutputChrome')
-	let g:GrailsTestsBrowser = "google-chrome --app=file://"
-endif
-
-command! -nargs=0 RunSingleGrailsTest call RunSingleGrailsTest()
-command! -nargs=0 RunGrailsTestFile call RunGrailsTestFile()
+command! -nargs=0 GrailsRunTestFile call RunGrailsTestFile()
+command! -nargs=0 GrailsRunCurrentTest call RunSingleGrailsTest()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
-command! -nargs=0 ReRunGrailsTest call ReRunGrailsTest()
-command! -nargs=0 StartGrailsTestsBrowser call StartGrailsTestsBrowser()
-command! -nargs=1 -complete=file -bar RunGrailsTest call RunGrailsTest('<args>')
+command! -nargs=0 GrailsReRunTest call ReRunGrailsTest()
+command! -nargs=0 GrailsTestsBrowser call StartGrailsTestsBrowser()
+command! -nargs=1 -complete=file -bar GrailsRunTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
 autocmd BufEnter _grails_ execute ":startinsert"
