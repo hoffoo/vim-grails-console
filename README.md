@@ -18,11 +18,26 @@ to the previous editor window.
 
 ```vim
 " Settings - off by default
-" NOTE: all the keymappings apply only to the _grails_ buffer so not to conflict with the rest of your setup
-let g:GrailsShellStartSplit = 1 " set this to open the shell buffer across the bottom in a split
-let g:GrailsShellReturnKey = "<C-w><C-w>" " remap a key to switch back to previous buffer
-let g:GrailsShellRemapBS = 1 " if this is set insert mode backspace will be remapped to <C-w> to delete whole word backwards
-let g:GrailsTestsBrowser = "chromium --app=file://"  " command that will be passed the tests url when running :GrailsTestsBrowser
+" NOTE: all the keymappings apply only to the _grails_ buffer so not to conflict
+" with the rest of your setup
+
+" set this to open the shell buffer across the bottom in a split
+let g:GrailsShellStartSplit = 1
+
+" remap a key to switch back to previous buffer
+let g:GrailsShellReturnKey = "<C-w><C-w>"
+
+" if this is set insert mode backspace will be remapped to <C-w> to delete 
+" whole word backwards
+let g:GrailsShellRemapBS = 1
+
+" command that will be passed the tests url when running :GrailsTestsBrowser
+let g:GrailsTestsBrowser = "chromium --app=file://"
+
+" You can override the path to the grails executable using:
+" default is grails
+let g:GrailsShellExecutable = "/opt/grails/bin/grails"
+
 
 " Recommended Conque settings
 let g:ConqueTerm_ReadUnfocused = 1 " run while not the selected window
@@ -34,30 +49,30 @@ Plugin Commands:
 " Start the grails shell
 :StartGrailsConque
 
-" Run the current file as a Grails test (unit or integration is inferred by file path)
+" Run the current file as a Grails test 
+" (unit or integration is inferred by file path)
 :GrailsRunTestFile
 
-" Map to run the Test under the cursor -
+" Run the Test under the cursor -
 :GrailsRunCurrentTest
 
 " You can also run a test by name, making it convenient to map a specific run:
 :GrailsRunTest TestName
 
-" another useful command to map is reruning the last test
+" Another useful command to map is reruning the last test
 :GrailsReRunTest
-
-" You can also override the path to the executable using:
-let g:GrailsShellExecutable = "/opt/grails/bin/grails" " default is just grails
 ```
 
 You can also open a browser frame to show the html output of your tests - 
 to do this set:
 ```vim
 
-" this is the executable that will be passed the tests url "
-let g:GrailsTestsBrowser = 'chromium --app=file://' " open in a no tab chromium frame
-let g:GrailsTestsBrowser = 'firefox ' " notice the space
-let g:GrailsTestsBrowser = 'chromium ' " open with regular tab
+" this is the executable that will be passed the tests url
+" open in a no tab chromium frame
+let g:GrailsTestsBrowser = 'chromium --app=file://' 
+let g:GrailsTestsBrowser = 'firefox ' " NOTE: notice the space
+" open with regular tab
+let g:GrailsTestsBrowser = '/usr/bin/google-chrome ' 
 
 " and open the browser with
 :GrailsTestsBrowser
@@ -69,6 +84,7 @@ let g:GrailsTestsBrowser = 'chromium ' " open with regular tab
 TODO:
 
 - Search upwards if we are in a sub directory of a grails project
+- Regex upwards to find the test function name, rather than passing it with the cursor 
 
 Resources:
 http://www.objectpartners.com/2012/02/28/using-vim-as-your-grails-ide-part-2/ - mostly modified the test script from here
