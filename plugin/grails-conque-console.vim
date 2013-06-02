@@ -67,7 +67,7 @@ function! StartGrailsConque()
 endfunction
 
 function! StartGrailsTestsBrowser()
-	execute ":! " . g:GrailsTestsBrowser . "`pwd`/target/test-reports/html/index.html&"
+	execute ":! " . g:GrailsTestsBrowser . "" . getcwd() ."/target/test-reports/html/index.html&"
 endfunction
 
 "function! TestResults()
