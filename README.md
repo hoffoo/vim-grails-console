@@ -104,4 +104,4 @@ TODO:
 - Regex upwards to find the test function name, rather than passing it with the cursor 
 
 Resources:
-http://www.objectpartners.com/2012/02/28/using-vim-as-your-grails-ide-part-2/ - mostly modified the test script from here
+http://www.objectpartners.com/2012/02/28/using-vim-as-your-grails-ide-part-2/
