@@ -11,48 +11,26 @@ git clone https://github.com/rosenfeld/conque-term.git
 git clone https://github.com/hoffoo/vim-grails-console.git
 ```
 
-Console
--------
-If you have the grails-console plugin you can also send a file directly
-console plugin. To do this either copy or link the RunConsole.groovy file 
-to the scripts/ in your grails project directory. Grails needs this to 
-run a script at the command line.
-
-
-Provided you have the grails-console plugin you can send files directly to
-the grails app from vim. To do this either copy, or link the RunConsole.groovy
-file to your scripts directory within your grails project.
-
-
-```vim
-:GrailsRunConsole <filename>.groovy " send the file to groovy console
-
-" Note that by default :GrailsReRun will only rerun tests - to enable
-" rerun of console set the option 
-
-let g:GrailsReRunConsole = 1
-
-```
-
-
 Testing
 ------
 You can either run the entire file or the test function under your cursor. 
 
-You can set an insert mode  key to switch out of the shell buffer and 
-go back to the previous editor window.
 
 ```vim
-:StartGrailsConque " Start the grails shell
+" Start the grails shell
+:StartGrailsConque
 
-:GrailsRunTestFile " Run the current file as a Grails test 
-" (unit or integration is inferred by file path)
+" Run the current file as a Grails test
+:GrailsRunTestFile
 
-:GrailsRunCurrentTest " Run the Test under the cursor -
+" Run the Test under the cursor
+:GrailsRunCurrentTest
 
-:GrailsRunTest TestName " You can also run a test by name
+" You can also run a test by name
+:GrailsRunTest TestName
 
-:GrailsReRun " Another useful command to map is reruning the last test
+" Rerun the last test
+:GrailsReRun
 ```
 
 ```vim
@@ -99,6 +77,24 @@ let g:GrailsTestsBrowser = '/usr/bin/google-chrome '
 :GrailsTestsBrowser
 
 ```
+
+Console
+-------
+Provided you have the grails-console plugin you can run scripts directly to
+the grails app from vim. To do this either copy, or link the RunConsole.groovy
+file to the scripts directory within your grails project.
+
+
+```vim
+:GrailsRunConsole <filename>.groovy " send the file to groovy console
+
+" Note that by default :GrailsReRun will only rerun tests - to enable
+" rerun of console set the option 
+
+let g:GrailsReRunConsole = 1
+
+```
+
 
 The default behaviour is to enter insert mode after switching back to the grails 
 buffer so Conque will update. This way it does not override the 
