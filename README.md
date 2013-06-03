@@ -1,3 +1,6 @@
+Grails Shell Plugin
+==================
+
 Simple plugin that uses Conque-Shell interact with a grails app. To use this
 you need to have conque-shell installed beforehand. I recommend using [pathogen](https://github.com/tpope/vim-pathogen "Pathogen").
 
@@ -8,7 +11,8 @@ git clone https://github.com/rosenfeld/conque-term.git
 git clone https://github.com/hoffoo/vim-grails-console.git
 ```
 
-=== Console ===
+Console
+-------
 If you have the grails-console plugin you can also send a file directly
 to the grails app as if you were using it on the page. To do this either
 copy or link the RunConsole.groovy file to your scripts/ in your grails 
@@ -22,7 +26,8 @@ Note that by default :GrailsReRun will only rerun tests - to enable
 rerun of console set the option g:GrailsReRunConsole = 1
 
 
-=== Testing ===
+Testing
+------
 You can either run the entire file or the test function under your cursor. 
 
 You can set an insert mode  key to switch out of the shell buffer and 
@@ -70,7 +75,6 @@ let g:ConqueTerm_ReadUnfocused = 1 " run while not the selected window
 let g:ConqueTerm_CloseOnEnd = 1 " quit grails when done
 ```
 
-=== Tests Browser ===
 You can open a browser frame to show the html output of your tests:
 ```vim
 
