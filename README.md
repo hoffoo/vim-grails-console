@@ -1,8 +1,8 @@
 Grails Shell Plugin
 ==================
 
-Simple plugin that uses Conque-Shell to run tests, interact with the shell, and use the grails console inside vim.. To use this
-you need to have conque-shell installed beforehand. I recommend using [pathogen](https://github.com/tpope/vim-pathogen "Pathogen").
+Simple plugin that uses ConqueTerm to run tests, interact with the shell, and use the grails console inside vim. To use this
+you need to have ConqueTerm installed beforehand. I recommend using [pathogen](https://github.com/tpope/vim-pathogen "Pathogen").
 
 If thats the case you can do:
 ```sh
