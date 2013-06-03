@@ -8,6 +8,7 @@ command! -nargs=0 GrailsRunCurrentTest call RunSingleGrailsTest()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
 command! -nargs=0 GrailsReRunTest call ReRunGrailsTest()
 command! -nargs=0 GrailsTestsBrowser call StartGrailsTestsBrowser()
+command! -nargs=1 -complete=file -bar GrailsRunConsole call GrailsRunConsole('<args>')
 command! -nargs=1 -complete=file -bar GrailsRunTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
@@ -39,10 +40,8 @@ function! ReRunGrailsTest()
 	call RunInConque(g:lastGrailsTest)
 endfunction
 
-function! RunInConque(testcmd)
-	execute ":drop _grails_"
-	execute ":startinsert"
-	execute ":normal i" . a:testcmd . "\<CR>"
+function! GrailsRunConsole(filename)
+	call RunInConque("RunConsole --file=" . a:filename)
 endfunction
 
 function! StartGrailsConque()
@@ -58,9 +57,14 @@ function! StartGrailsConque()
 	endif
 endfunction
 
+function! RunInConque(cmd)
+	execute ":drop _grails_"
+	execute ":startinsert"
+	execute ":normal i" . a:cmd . "\<CR>"
+endfunction
+
+
 function! StartGrailsTestsBrowser()
 	execute ":! " . g:GrailsTestsBrowser . "" . getcwd() ."/target/test-reports/html/index.html&"
 endfunction
 
-"function! TestResults()
-"endfunction

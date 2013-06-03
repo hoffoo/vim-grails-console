@@ -1,9 +1,3 @@
-/*
-This script allows you to run a file trough the grails console
-It requires the excellent grails-console plugin installed. 
-
-Get it here: http://grails.org/plugin/console */
-
 import org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletRequest
 
 includeTargets << grailsScript('_GrailsBootstrap')
@@ -26,12 +20,29 @@ target('runConsole': "Run target file in the console.") {
 		// get service
 		def consoleService = appCtx.getBean('consoleService')
 
+		// make gorm work
+		def persistenceInterceptor = appCtx.getBean('persistenceInterceptor')
+		persistenceInterceptor.init()
+
 		// run file snippet
 		def result = consoleService.eval(file.text, true, request)
 
+		// cleanup
+		persistenceInterceptor.flush()
+		persistenceInterceptor.destroy()
+
+		println ""
+
 		// results
-		println result.output + "\n"
-		println result.result
+		if (result.output)
+			println result.output + "\n"
+			
+		if (result.exception)
+			println result.exception
+
+		if (result.result)
+			println result.result
+
 		
 	} catch (FileNotFoundException fE) {
 		println "Error: " + fE.message
