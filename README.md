@@ -18,8 +18,8 @@ project directory. Grails needs this to run a script at the command line.
 :GrailsRunConsole <filename>.groovy " send the file to groovy console
 ```
 
-Note that by default :GrailsReRun will run both last test and last console.
-You can disable this by setting :GrailsReRunOnlyTests
+Note that by default :GrailsReRun will only rerun tests - to enable
+rerun of console set the option g:GrailsReRunConsole = 1
 
 
 === Testing ===
@@ -39,7 +39,7 @@ Commands:
 
 :GrailsRunTest TestName " You can also run a test by name
 
-:GrailsReRunTest " Another useful command to map is reruning the last test
+:GrailsReRun " Another useful command to map is reruning the last test
 ```
 
 Settings:
