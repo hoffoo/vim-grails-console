@@ -12,8 +12,16 @@ command! -nargs=1 -complete=file -bar GrailsRunConsole call GrailsRunConsole('<a
 command! -nargs=1 -complete=file -bar GrailsRunTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
-autocmd BufEnter _grails_ execute ":startinsert"
+autocmd BufEnter _grails_ call GrailsEnteredConsole()
 autocmd BufLeave _grails_ execute ":stopinsert"
+
+function! GrailsEnteredConsole()
+	if exists('g:GrailsInsertOnEnter')
+		if (g:GrailsInsertOnEnter == 1)
+			:startinsert
+		endif
+	endif 
+endfunction
 
 function! GrailsRunSingleTest()
     let testName = expand("%:t:r.") . "." . expand("<cword>")
@@ -46,9 +54,11 @@ endfunction
 
 function! GrailsRunConsole(filename)
 	let l:consoleCommand = "RunConsole --file=" . a:filename
-	if (g:GrailsReRunConsole == 1)
-		let s:lastGrailsTest = l:consoleCommand
-	endif 
+	if (exists('g:GrailsReRunConsole'))
+		if (g:GrailsReRunConsole == 1)
+			let s:lastGrailsTest = l:consoleCommand
+		endif 
+	endif
 	call RunInConque(l:consoleCommand)
 endfunction
 
