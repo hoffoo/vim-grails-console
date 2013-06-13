@@ -11,6 +11,13 @@ git clone https://github.com/rosenfeld/conque-term.git
 git clone https://github.com/hoffoo/vim-grails-console.git
 ```
 
+You can also use [VAM](https://github.com/MarcWeber/vim-addon-manager), in this case you don’t need to care about dependencies:
+
+```vim
+" In your vimrc
+call vam#ActivateAddons(["grails-conque"])
+```
+
 Testing
 ------
 You can either run the entire file or the test function under your cursor. 
