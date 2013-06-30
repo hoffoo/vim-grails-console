@@ -88,9 +88,7 @@ let g:GrailsTestsBrowser = '/usr/bin/google-chrome '
 Console
 -------
 Provided you have the grails-console plugin you can run scripts directly to
-the grails app from vim. To do this either copy, or link the RunConsole.groovy
-file to the scripts directory within your grails project.
-
+the grails app from vim. 
 
 ```vim
 :GrailsRunConsole <filename>.groovy " send the file to groovy console
