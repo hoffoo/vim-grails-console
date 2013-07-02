@@ -1,3 +1,4 @@
+" TODO open groovy/grails shell automatically
 
 if !exists('g:GrailsShellExecutable')
 	let g:GrailsShellExecutable = "grails"
@@ -8,6 +9,7 @@ command! -nargs=0 GrailsRunCurrentTest call GrailsRunSingleTest()
 command! -nargs=0 StartGrailsConque call StartGrailsConque()
 command! -nargs=0 GrailsReRun call GrailsReRun()
 command! -nargs=0 GrailsTestsBrowser call GrailsTestsBrowser()
+command! -nargs=0 StartGrailsTestsBrowser call GrailsTestsBrowser()
 command! -nargs=1 -complete=file -bar GrailsRunTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
@@ -16,9 +18,7 @@ autocmd BufLeave _grails_ execute ":stopinsert"
 
 function! GrailsEnteredConsole()
 	if exists('g:GrailsInsertOnEnter')
-		if (g:GrailsInsertOnEnter == 1)
-			:startinsert
-		endif
+		:startinsert
 	endif 
 endfunction
 
@@ -86,3 +86,60 @@ function! GrailsTestsBrowser()
 	execute ":! " . g:GrailsTestsBrowser . "" . getcwd() ."/target/test-reports/html/index.html&"
 endfunction
 
+
+if !exists('g:GroovyShellExecutable')
+	let g:GroovyShellExecutable = "groovy"
+endif
+
+let g:GroovyClasspath = 'lib'
+
+let s:started = 0
+
+command! -nargs=0 GroovyRunFile call GroovyRunFile()
+command! -nargs=0 GroovyReRun call GroovyReRun()
+command! -nargs=0 StartGroovyConque call StartGroovyConque()
+command! -nargs=1 -complete=file -bar GroovyRun call RunGroovyTest('<args>')
+
+autocmd BufHidden _groovy_ silent let s:started = 0
+autocmd BufHidden _groovy_ silent execute ":bdel _groovy_"
+
+autocmd BufEnter _groovy_ silent call GroovyEnteredConsole()
+autocmd BufLeave _groovy_ ":stopinsert"
+
+function! GroovyEnteredConsole()
+	:startinsert
+endfunction
+
+function! GroovyRunFile()
+    let filename = expand("%:p")
+    :call GroovyRun(filename)
+endfunction
+
+function! GroovyRun(filename)
+	let s:lastRan =  "" . g:GroovyShellExecutable . " -cp " . g:GroovyClasspath . " "  . a:filename
+    call GroovyRunInConque(s:lastRan)
+endfunction
+
+function! GroovyReRun()
+	if (exists('s:lastRan'))
+		call GroovyRunInConque(s:lastRan)
+	else
+		echo "No groovy last ran."
+	endif
+endfunction
+
+function! StartGroovyConque()
+	:botright sp
+
+	execute ':ConqueTerm bash'
+	:file _groovy_
+	:resize 18
+
+	execute ":inoremap <buffer> <c-w> <esc><C-w>p"
+endfunction
+
+function! GroovyRunInConque(cmd)
+	:drop _groovy_
+	:startinsert
+	execute ":normal i" . a:cmd . "\<CR>"
+endfunction
