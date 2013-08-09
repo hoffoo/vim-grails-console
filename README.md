@@ -33,9 +33,6 @@ You can either run the entire file or the test function under your cursor.
 " Run the Test under the cursor
 :GrailsRunCurrentTest
 
-" You can also run a test by name
-:GrailsRunTest TestName
-
 " Rerun the last test
 :GrailsReRun
 ```

@@ -4,13 +4,12 @@ if !exists('g:GrailsShellExecutable')
 	let g:GrailsShellExecutable = "grails"
 endif
 
+command! -nargs=0 StartGrailsConque call StartGrailsConque()
+command! -nargs=0 StartGrailsDebugConque call StartGrailsDebugConque()
+command! -nargs=0 StartGrailsTestsBrowser call GrailsTestsBrowser()
 command! -nargs=0 GrailsRunTestFile call GrailsRunTestFile()
 command! -nargs=0 GrailsRunCurrentTest call GrailsRunSingleTest()
-command! -nargs=0 StartGrailsConque call StartGrailsConque()
 command! -nargs=0 GrailsReRun call GrailsReRun()
-command! -nargs=0 GrailsTestsBrowser call GrailsTestsBrowser()
-command! -nargs=0 StartGrailsTestsBrowser call GrailsTestsBrowser()
-command! -nargs=1 -complete=file -bar GrailsRunTest call RunGrailsTest('<args>')
 
 autocmd BufHidden _grails_ execute ":bdel _grails_"
 autocmd BufEnter _grails_ call GrailsEnteredConsole()
@@ -52,11 +51,19 @@ function! GrailsReRun()
 endfunction
 
 function! StartGrailsConque()
+	call GrailsConque('')
+endfunction
+
+function! StartGrailsDebugConque()
+	call GrailsConque('-debug')
+endfunction
+
+function! GrailsConque(debug)
 	if exists('g:GrailsShellStartSplit')
 		:botright sp
 	endif
 
-	execute ':ConqueTerm ' . g:GrailsShellExecutable
+	execute ':ConqueTerm ' . g:GrailsShellExecutable . a:debug
 	:file _grails_
 	:resize 18
 
@@ -64,6 +71,7 @@ function! StartGrailsConque()
 		execute ":inoremap <buffer> " . g:GrailsShellReturnKey . " <esc><C-w>p"
 	endif
 endfunction
+
 
 function! GrailsRunInConque(cmd)
 	:drop _grails_
@@ -91,7 +99,7 @@ if !exists('g:GroovyShellExecutable')
 	let g:GroovyShellExecutable = "groovy"
 endif
 
-let g:GroovyClasspath = 'lib'
+let g:GroovyClasspath = '"lib/*"'
 
 let s:started = 0
 
