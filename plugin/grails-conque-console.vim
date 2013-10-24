@@ -66,6 +66,7 @@ function! GrailsConque(debug)
 	execute ':ConqueTerm ' . g:GrailsShellExecutable . a:debug . ' -reloading '
 	:file _grails_
 	:resize 15
+	:setl winfixheight
 
 	if exists('g:GrailsShellReturnKey')
 		execute ":inoremap <buffer> " . g:GrailsShellReturnKey . " <esc><C-w>p"
